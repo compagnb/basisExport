@@ -133,8 +133,6 @@ var getData = function(date) {
     })
 }
 
-
-
 function parseData(data){
     console.log("parsing data...");
     //reset arrays
