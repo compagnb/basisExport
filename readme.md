@@ -15,17 +15,17 @@ Prior to running freeData.js the following install commands must be run in the d
 
 ## Information On Variables
 
-*  _**date**_ pulls the current date from the system.
-*  "outputFile" is set to be called "metrics.json", this can be changed here.
-*  "usr" put your user-name for basis account in here
-*  "psw" put your password for basis account in here
-*  "access_token" code response from server for authorizing data from internal API
-*  "freq" is the amount of in between loops of the script run... Basis only updates metric data once per minute so although you can set it to be updated more frequently it is not necessary at this point in time.
-*  "conString" insert your postgres database info here to connect
-*  "requestDate"
-*  "heartArray"
-*  "caloriesArray"
-*  "stepsArray"
-*  "gsrArray"
-*  "skin_tempArray"
-*  "metricData"
+*  _**date**_ : pulls the current date from the system.
+*  _**outputFile**_ : is set to be called "metrics.json", this can be changed here.
+*  _**usr**_ : put your user-name for basis account in here
+*  _**psw**_ : put your password for basis account in here
+*  _**access_token**_ : code response from server for authorizing data from internal API
+*  _**freq**_ : is the amount of in between loops of the script run... Basis only updates metric data once per minute so although you can set it to be updated more frequently it is not necessary at this point in time.
+*  _**conString**_ : insert your postgres database info here to connect
+*  _**requestDate**_ : 
+*  _**heartArray**_ : 
+*  _**caloriesArray**_ : 
+*  _**stepsArray**_ : 
+*  _**gsrArray**_ : 
+*  _**skin _ tempArray**_ : 
+*  _**metricData**_ : 
