@@ -13,8 +13,8 @@ var pg = require('pg');  //pg module required to post info to postgres database
 var date = new Date(); //get date
 var outputFile = 'metrics.json'; //file for metrics to be written
 var access_token; //pulls internal access token so we can gather data
-var username = 'compagnb@gmail.com'; //username for basis account
-var password = 'Surf2010'; //password for basis account
+var username = ''; //username for basis account
+var password = ''; //password for basis account
 var freq = 60000; //sets the frequency to 60000 milliseconds or 1 minute
 var requestDate;
 
