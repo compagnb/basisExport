@@ -5,7 +5,7 @@
 //include modules ----------------------------------------------------------
 var request = require('request'); //request module required to send username and password to url to receive data
 var fs = require('fs'); //fs module required to write data to a file if needed
-// var pg = require('pg');  //pg module required to post info to postgres database
+var pg = require('pg');  //pg module required to post info to postgres database
 // var async = require('async'); //async module to help the flow of functions and avoid null input to database
 // var socket = require('socket.io-client')('host to be input'); //socket module needed to test api data.
 
@@ -13,8 +13,8 @@ var fs = require('fs'); //fs module required to write data to a file if needed
 var date = new Date(); //get date
 var outputFile = 'metrics.json'; //file for metrics to be written
 var access_token; //pulls internal access token so we can gather data
-var username = ''; //username for basis account
-var password = ''; //password for basis account
+var username = 'compagnb@gmail.com'; //username for basis account
+var password = 'Surf2010'; //password for basis account
 var freq = 60000; //sets the frequency to 60000 milliseconds or 1 minute
 var requestDate;
 
@@ -26,7 +26,7 @@ var skin_tempArray = [];
 
 var metricData; //
 
-// var conString = 'postgres database info'; //connection string for database
+var conString = "postgres://barb:basisdata@basisdata.cruj1d5neyqx.us-west-2.rds.amazonaws.com:5432/postgres"; //connection string for database
 
 //functions ----------------------------------------------------------------
 
@@ -72,7 +72,7 @@ function cleanToken(token){
         return cleanToken; //return the token!
     }
 
-var requestUser = function (usr, psw) {
+var requestData = function (usr, psw) {
     console.log( "logging into site using credentials");
     request({
         uri: 'https://app.mybasis.com/login', //login site
@@ -128,6 +128,8 @@ var getData = function(date) {
         }
         //console.log(data); //for testing
         parseData(data);
+        // console.log(heartArray[heartArray.length-1] + "," + caloriesArray[caloriesArray.length-1] + "," + stepsArray[stepsArray.length-1] + "," + gsrArray[gsrArray.length-1] + "," + skin_tempArray[skin_tempArray.length-1]);
+        uploadDataToDB(heartArray[heartArray.length-1], caloriesArray[caloriesArray.length-1], stepsArray[stepsArray.length-1], gsrArray[gsrArray.length-1], skin_tempArray[skin_tempArray.length-1]);
         writeDataToFile(data);
 
     })
@@ -160,14 +162,14 @@ function writeDataToFile(data){
     })
 }
 
-function uploadDataToDB(date, time, heart, calories, step, gsr, skinTemp){
+function uploadDataToDB(heart, calories, step, gsr, skinTemp){
 
     pg.connect(conString, function(err, client, done) {
         if(err) {
           return console.error('error fetching client from pool', err);
         }
-
-        client.query("INSERT INTO sensorTest VALUES ('1', DEFAULT);", function(err, result) {
+        // client.query("INSERT INTO barbData VALUES (DEFAULT,NULL ,NULL, NULL,NULL, NULL);", function(err, result) {
+        client.query("INSERT INTO barbData VALUES (DEFAULT, " + heart +","+ calories +","+ step +","+ gsr  +","+ skinTemp +");", function(err, result) {
          //call `done()` to release the client back to the pool
          done();
 
@@ -176,6 +178,7 @@ function uploadDataToDB(date, time, heart, calories, step, gsr, skinTemp){
         }
         console.log(result);
       });
+    });
 }
 
 
@@ -184,7 +187,7 @@ function uploadDataToDB(date, time, heart, calories, step, gsr, skinTemp){
 setInterval(function() {
     console.log('refreshing data...');
     formatDate(date);
-    requestUser(username, password)
+    requestData(username, password)
 
     // console.log(sleep);
     // console.log(activities);
