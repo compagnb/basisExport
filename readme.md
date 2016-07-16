@@ -14,35 +14,16 @@ Prior to running freeData.js the following install commands must be run in the d
 
 
 ## Information On Variables
-
-<<<<<<< Updated upstream
-*  _**date**_ : pulls the current date from the system.
-*  _**outputFile**_ : is set to be called "metrics.json", this can be changed here.
-*  _**usr**_ : put your user-name for basis account in here
-*  _**psw**_ : put your password for basis account in here
-*  _**access_token**_ : code response from server for authorizing data from internal API
-*  _**freq**_ : is the amount of in between loops of the script run... Basis only updates metric data once per minute so although you can set it to be updated more frequently it is not necessary at this point in time.
-*  _**conString**_ : insert your postgres database info here to connect
-*  _**requestDate**_ : 
-*  _**heartArray**_ : 
-*  _**caloriesArray**_ : 
-*  _**stepsArray**_ : 
-*  _**gsrArray**_ : 
-*  _**skin _ tempArray**_ : 
-*  _**metricData**_ : 
-=======
-*  _**date**_ pulls the current date from the system.
-*  _**outputFile**_ is set to be called "metrics.json", this can be changed here.
-*  _**usr**_ put your user-name for basis account in here
-*  _**psw**_ put your password for basis account in here
-*  _**access_token**_ code response from server for authorizing data from internal API
-*  _**freq**_ is the amount of in between loops of the script run... Basis only updates metric data once per minute so although you can set it to be updated more frequently it is not necessary at this point in time.
-*  _**conString**_ insert your postgres database info here to connect
-*  _**requestDate**_
-*  _**heartArray**_
-*  _**caloriesArray**_
-*  _**stepsArray**_
-*  _**gsrArray**_
-*  _**skin_tempArray**_
-*  _**metricData**_
->>>>>>> Stashed changes
+1.  date - is set to pull the current date from the computer being used to run the script.
+1.  outputFile - is set to be called "metrics.json". It is what the saved file will be called when saved.
+1.  usr - is used as the username to be submitted for Basis account access,  put your user-name for basis account in here.
+1.  psw - is used as the password to gain access to the user's Basis account, put your password for basis account in here.
+1.  access_token - code response from server for authorizing data from internal API, no need to touch anything here (was tested on all browsers).
+1.  freq - is the amount of time in between loops of the script run. Basis only updates metric data once per minute so although you can set it to be updated more frequently it is not necessary at this point in time.
+1.  conString - is used to upload data into a database, insert your postgres database info here to connect (Use the following format: postgres://username:database@hostinfo:port/postgres")
+1.  requestDate - is the cleaned and reformatted date that is then used to pull data from that date from the API
+1.  heartArray - is an array of all heart rates gathered per freq.
+1.  caloriesArray - is an array of all calorie gathered per freq.
+1.  stepsArray - is an array of all steps taken gathered per freq.
+1.  gsrArray - is an array of all GSR data gathered per freq.
+1.  skin _ tempArray - is an array of all skin temps gathered per freq.
